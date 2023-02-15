@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class MonsterBullet : MonoBehaviour
 {
     [SerializeField] float damage;
     [SerializeField] float speed;
 
     float lifeTime;
-
-
     private void Awake()
     {
-        lifeTime = 2f;
+        lifeTime = 4f;
     }
     void Update()
     {
@@ -45,9 +43,9 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Monster"))
+        if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<Monster>().TakeDamage(damage);
+            collision.GetComponent<Player>().TakeDamage(damage);
             Destroy(gameObject);
         }
     }

@@ -12,35 +12,26 @@ public class Player : MonoBehaviour
     [Header("Bullet Status")]
     [SerializeField] float bulletDamage;
     [SerializeField] float bulletSpeed;
-    [SerializeField] float bulletLifeTime;
+    [SerializeField] float bulletFireRate;
+    float bulletReloadTime;
 
-    public Camera camera;
     public GameObject NormalBullet;
-    public GameObject PlayerCircle;
 
     void Update()
     {
         Movement();
         Fire();
-        PlayerRotate();
     }
 
     void Movement()
     {
-        float x = Input.GetAxisRaw("Horizontal") * speed * 0.01f;
-        float y = Input.GetAxisRaw("Vertical") * speed * 0.01f;
-
-        gameObject.transform.Translate(x, y, 0);
+        if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x > -8.5f && Camera.main.ScreenToWorldPoint(Input.mousePosition).x < 8.5 && Camera.main.ScreenToWorldPoint(Input.mousePosition).y < 4.6f && Camera.main.ScreenToWorldPoint(Input.mousePosition).y > -4.6f)
+        {
+            gameObject.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0);   
+        }
     }
 
-    void PlayerRotate()
-    {
-        Vector2 mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 dirVec = mousePos - (Vector2)transform.position;
-        PlayerCircle.transform.up = dirVec.normalized;
-    }
-
-    void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         if (hp <= damage)
         {
@@ -59,9 +50,14 @@ public class Player : MonoBehaviour
 
     void Fire()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (bulletReloadTime > 0)
         {
-            Instantiate(NormalBullet, transform.position, PlayerCircle.transform.rotation).GetComponent<Bullet>().SetBulletStats(bulletDamage, bulletSpeed, bulletLifeTime);
+            bulletReloadTime -= Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.Mouse0) && bulletReloadTime <= 0)
+        {
+            Instantiate(NormalBullet, transform.position, transform.rotation).GetComponent<Bullet>().SetBulletStatus(bulletDamage, bulletSpeed);
+            bulletReloadTime = bulletFireRate;
         }
     }
 }
