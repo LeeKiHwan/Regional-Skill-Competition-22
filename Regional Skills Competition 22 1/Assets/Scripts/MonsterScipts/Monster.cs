@@ -15,10 +15,9 @@ public class Monster : MonoBehaviour
     [SerializeField] float hp;
     [SerializeField] float speed;
     [SerializeField] int score;
-    public float painDamage;
 
     [Header("Bullet Status")]
-    [SerializeField] float bulletDamage;
+    public float bulletDamage;
     [SerializeField] float bulletSpeed;
     [SerializeField] float bulletFireRate;
     float bulletReloadTime;
@@ -71,7 +70,7 @@ public class Monster : MonoBehaviour
         {
             Vector3 dir = Player.transform.position - transform.position;
 
-            Instantiate(MonsterBullet, gameObject.transform.position, Quaternion.Euler(dir.normalized)).GetComponent<MonsterBullet>().SetBulletStatus(bulletDamage, bulletSpeed);
+            Instantiate(MonsterBullet, gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 180))).GetComponent<MonsterBullet>().SetBulletStatus(bulletDamage, bulletSpeed);
 
             bulletReloadTime = bulletFireRate;
         }
@@ -82,6 +81,11 @@ public class Monster : MonoBehaviour
         if (collision.CompareTag("Wall"))
         {
             Destroy(gameObject);
+        }
+
+        if (collision.CompareTag("Player"))
+        {
+            collision.GetComponent<Player>().TakeDamage(bulletDamage * 0.5f);
         }
     }
 }

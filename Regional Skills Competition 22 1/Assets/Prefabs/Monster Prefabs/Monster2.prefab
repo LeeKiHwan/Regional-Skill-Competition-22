@@ -136,10 +136,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterType: 0
   hp: 60
-  speed: 2
+  speed: 1
   score: 10
   painDamage: 10
-  bulletDamage: 5
+  bulletDamage: 7
   bulletSpeed: 3
-  bulletFireRate: 1
+  bulletFireRate: 3
   MonsterBullet: {fileID: 5656871361275892396, guid: f088b113c79a19b4b80e67d5c22c2741, type: 3}

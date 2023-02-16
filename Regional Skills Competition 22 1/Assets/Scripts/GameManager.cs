@@ -6,14 +6,18 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
 
+    [Header("Game Status")]
     [SerializeField] private int score = 0;
     [SerializeField] private float pain;
+    [SerializeField] bool isGameover;
 
+    [Header("Game Objects")]
     public GameObject[] MonsterObjects;
-
+    public GameObject ItemObject;
     public GameObject BackGround;
 
-    float spawnDelay;
+    float monsterSpawnDelay = 2f;
+    float itemSpawnDelay = 10f;
 
     void Awake()
     {
@@ -44,31 +48,47 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         SpawnMonster();
+        SpawnItem();
         BackGroundMove();
     }
 
-    void SpawnMonster()
+    private void SpawnMonster()
     {
-        if (spawnDelay > 0)
+        if (monsterSpawnDelay > 0)
         {
-            spawnDelay -= Time.deltaTime;
+            monsterSpawnDelay -= Time.deltaTime;
         }
-
-        if (spawnDelay <= 0)
+        else
         {
             int ranMonster = Random.Range(0, 3);
 
             Instantiate(MonsterObjects[ranMonster], new Vector3(Random.Range(-8.0f, 8.0f), 6, 0), Quaternion.identity);
-            spawnDelay = 2f;
+            monsterSpawnDelay = 2f;
+        }
+    }
+
+    private void SpawnItem()
+    {
+        if (itemSpawnDelay > 0)
+        {
+            itemSpawnDelay -= Time.deltaTime;
+        }
+        else
+        {
+            Instantiate(ItemObject, new Vector3(Random.Range(-8.0f, 8.0f), 6, 0), Quaternion.identity);
+            itemSpawnDelay = 10f;
         }
     }
 
     public void AddScore(int score)
     {
-        this.score += score;
+        if (!isGameover)
+        {
+            this.score += score;
+        }
     }
 
-    public void BackGroundMove()
+    private void BackGroundMove()
     {
         Vector3 curPos = BackGround.transform.position;
         Vector3 nextPos = Vector3.down * 1 * Time.deltaTime;
@@ -83,13 +103,18 @@ public class GameManager : MonoBehaviour
 
     public void TakePain(float pain)
     {
-        if (this.pain <= pain)
+        if (this.pain + pain >= 100)
         {
 
         }
         else
         {
-            pain -= pain;
+            this.pain += pain;
         }
+    }
+
+    public void GameOver()
+    {
+
     }
 }

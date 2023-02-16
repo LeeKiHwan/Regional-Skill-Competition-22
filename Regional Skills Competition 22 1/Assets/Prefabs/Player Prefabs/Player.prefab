@@ -47,12 +47,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  speed: 2
-  isDie: 0
+  speed: 5
+  invincibility: 0
+  Bullet:
+  - {fileID: 3353471333395183177, guid: 6d835bae96589ca498cb44575c3dc329, type: 3}
+  - {fileID: 5332381116660822479, guid: 1c726d046a701da4a9a8e7a5700f24c1, type: 3}
+  - {fileID: 7016490085902653542, guid: 3411c9debf4cb5b488e8aeb9796580d1, type: 3}
+  - {fileID: 3665050367600500117, guid: 3075c4dd3b5759f48b8233617f306629, type: 3}
+  - {fileID: 4740573465049392957, guid: e498c852f0af3984da20807b8f84bd63, type: 3}
+  bulletLevel: 0
   bulletDamage: 10
   bulletSpeed: 5
   bulletFireRate: 0.15
-  NormalBullet: {fileID: 3353471333395183177, guid: 6d835bae96589ca498cb44575c3dc329, type: 3}
 --- !u!212 &1284649165879880256
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -114,7 +120,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -140,4 +146,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4

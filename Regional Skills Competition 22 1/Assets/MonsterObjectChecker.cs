@@ -8,7 +8,7 @@ public class MonsterObjectChecker : MonoBehaviour
     {
         if (collision.CompareTag("Monster"))
         {
-            float painDamage = collision.GetComponent<Monster>().painDamage;
+            float painDamage = collision.GetComponent<Monster>().bulletDamage * 0.5f;
 
             GameManager.Instance.TakePain(painDamage);
 

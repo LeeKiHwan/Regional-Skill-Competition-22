@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2717462548001628477
+--- !u!1 &3353471333395183177
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2717462548001628480}
-  - component: {fileID: 2717462548001628481}
-  - component: {fileID: 2717462548001628478}
-  - component: {fileID: 2717462548001628479}
-  - component: {fileID: 2717462548001628476}
+  - component: {fileID: 3353471333395183179}
+  - component: {fileID: 3353471333395183178}
+  - component: {fileID: 3353471333395183180}
+  - component: {fileID: 1373737202}
+  - component: {fileID: -7853298494819927743}
   m_Layer: 0
-  m_Name: Monster3
-  m_TagString: Monster
+  m_Name: Player Bullet 1
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2717462548001628480
+--- !u!4 &3353471333395183179
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2717462548001628477}
+  m_GameObject: {fileID: 3353471333395183177}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.08, y: 7.34, z: 0}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2717462548001628481
+--- !u!212 &3353471333395183178
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2717462548001628477}
+  m_GameObject: {fileID: 3353471333395183177}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8414478535512612329, guid: c920a599e51e6144fa04b9bdc36c0c71, type: 3}
+  m_Sprite: {fileID: 874343242196921964, guid: a967d644d234ea449b3b00071a4b7a09, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,13 +85,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &2717462548001628478
-CircleCollider2D:
+--- !u!114 &3353471333395183180
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2717462548001628477}
+  m_GameObject: {fileID: 3353471333395183177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48444240a83937a4ba46ac3af35db5b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  speed: 3
+--- !u!61 &1373737202
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3353471333395183177}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -99,16 +113,26 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.13333334, y: 0.23333333}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.3
---- !u!50 &2717462548001628479
+  m_Size: {x: 0.15, y: 0.25}
+  m_EdgeRadius: 0
+--- !u!50 &-7853298494819927743
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2717462548001628477}
+  m_GameObject: {fileID: 3353471333395183177}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -121,25 +145,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
---- !u!114 &2717462548001628476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2717462548001628477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5449c6b89241c2b46893e11231e3dda1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterType: 0
-  hp: 30
-  speed: 2
-  score: 10
-  painDamage: 5
-  bulletDamage: 6
-  bulletSpeed: 5
-  bulletFireRate: 3
-  MonsterBullet: {fileID: 5656871361275892396, guid: f088b113c79a19b4b80e67d5c22c2741, type: 3}
+  m_Constraints: 4
