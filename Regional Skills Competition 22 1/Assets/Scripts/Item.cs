@@ -31,6 +31,7 @@ public class Item : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             collision.GetComponent<Player>().UseItem(itemType);
+            GameManager.Instance.AddScore(30);
             Destroy(gameObject);
         }
     }

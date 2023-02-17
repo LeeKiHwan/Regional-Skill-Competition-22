@@ -99,7 +99,11 @@ MonoBehaviour:
   speed: 2
   ItemList:
   - {fileID: 58079105515504969, guid: 0ec9e12e3e0a648429ea1eb7d102bd1b, type: 3}
+  - {fileID: 483530438009137309, guid: 0b756718d2317fd4a83ed8f263eb20dc, type: 3}
+  - {fileID: 7658372975312324371, guid: 254fd523439fc964998c9b75749f438d, type: 3}
   - {fileID: 5651913707945902499, guid: b7520fee545f2da40b5687838aebe9b8, type: 3}
+  - {fileID: 628496707489202768, guid: 8690538a025bf55409c4b2991225ef76, type: 3}
+  - {fileID: 4005358136033802282, guid: d2f5f3c9c2ff1824ea7ae7acdff913a5, type: 3}
 --- !u!58 &6345045442295699074
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    enum MonsterType
-    {
-        NormalMonster,
-        BossMonster
-    }
 
     [Header("Monster Status")]
-    [SerializeField] MonsterType monsterType;
     [SerializeField] float hp;
     [SerializeField] float speed;
     [SerializeField] int score;
@@ -27,7 +21,7 @@ public class Monster : MonoBehaviour
 
     private void Awake()
     {
-        Player = GameObject.Find("Player");
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
@@ -68,9 +62,12 @@ public class Monster : MonoBehaviour
 
         if (bulletReloadTime <= 0)
         {
-            Vector3 dir = Player.transform.position - transform.position;
+            Vector2 dir = (Vector2)Player.transform.position - (Vector2)transform.position;
 
-            Instantiate(MonsterBullet, gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 180))).GetComponent<MonsterBullet>().SetBulletStatus(bulletDamage, bulletSpeed);
+            MonsterBullet.transform.up = dir.normalized;
+            MonsterBullet.transform.position = transform.position;
+
+            Instantiate(MonsterBullet).GetComponent<MonsterBullet>().SetBulletStatus(bulletDamage, bulletSpeed);
 
             bulletReloadTime = bulletFireRate;
         }

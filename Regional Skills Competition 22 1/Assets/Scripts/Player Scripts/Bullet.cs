@@ -50,5 +50,10 @@ public class Bullet : MonoBehaviour
             collision.GetComponent<Monster>().TakeDamage(damage);
             Destroy(gameObject);
         }
+        if (collision.CompareTag("Boss"))
+        {
+            collision.GetComponent<BossMonster>().TakeDamage(damage);
+            Destroy(gameObject);
+        }
     }
 }

@@ -46,8 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c23720c9e704f3b46a9e10990cc3d0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
-  speed: 5
+  speed: 6.5
   invincibility: 0
   Bullet:
   - {fileID: 3353471333395183177, guid: 6d835bae96589ca498cb44575c3dc329, type: 3}
@@ -57,8 +56,8 @@ MonoBehaviour:
   - {fileID: 4740573465049392957, guid: e498c852f0af3984da20807b8f84bd63, type: 3}
   bulletLevel: 0
   bulletDamage: 10
-  bulletSpeed: 5
-  bulletFireRate: 0.15
+  bulletSpeed: 7
+  bulletFireRate: 0.2
 --- !u!212 &1284649165879880256
 SpriteRenderer:
   m_ObjectHideFlags: 0

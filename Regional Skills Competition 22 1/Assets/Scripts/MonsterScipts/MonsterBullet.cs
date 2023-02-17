@@ -48,5 +48,10 @@ public class MonsterBullet : MonoBehaviour
             collision.GetComponent<Player>().TakeDamage(damage);
             Destroy(gameObject);
         }
+        else if (collision.CompareTag("RedBloodCell"))
+        {
+            collision.GetComponent<RedBloodCell>().TakeDamage(damage);
+            Destroy(gameObject);
+        }
     }
 }

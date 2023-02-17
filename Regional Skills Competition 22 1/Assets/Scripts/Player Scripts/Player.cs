@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     [Header("Player Status")]
-    [SerializeField] float hp;
     [SerializeField] float speed;
     public bool invincibility;
 
@@ -35,15 +35,8 @@ public class Player : MonoBehaviour
     {
         if (!invincibility)
         {
-            if (hp <= damage)
-            {
-                Die();
-            }
-            else
-            {
-                hp -= damage;
-                StartCoroutine(HitInvincibility());
-            }
+            GameManager.Instance.TakeDamage(damage);
+            StartCoroutine(HitInvincibility());
         }
     }
 
@@ -65,10 +58,12 @@ public class Player : MonoBehaviour
         invincibility = true;
         gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2.5f);
 
-        invincibility = false;
         gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+
+        yield return new WaitForSeconds(0.5f);
+        invincibility = false;
 
         yield break;
     }
@@ -96,8 +91,11 @@ public class Player : MonoBehaviour
         switch (itemType)
         {
             case ItemType.BulletUpgrade:
-                bulletLevel++;
-                bulletDamage += 10f;
+                if (bulletLevel < 5)
+                {
+                    bulletLevel++;
+                    bulletDamage += 10f;
+                }
                 break;
 
             case ItemType.InvincibilityOn:
@@ -107,7 +105,7 @@ public class Player : MonoBehaviour
                 break;
 
             case ItemType.HpUp:
-                hp += 10;
+                GameManager.Instance.TakeDamage(-10);
                 break;
 
             case ItemType.PainDown:
@@ -115,12 +113,38 @@ public class Player : MonoBehaviour
                 break;
 
             case ItemType.BulletSpeed:
-                bulletSpeed += 0.5f;
+                bulletSpeed += 0.75f;
                 break;
 
             case ItemType.BulletFireRate:
-                bulletFireRate += 0.1f;
+                bulletFireRate -= 0.025f;
                 break;
+        }
+    }
+
+    private void CheatKey()
+    {
+        if (Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            if (bulletLevel > 0)
+            {
+                bulletLevel--;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            if (bulletLevel < 4)
+            {
+                bulletLevel++;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad4))
+        {
+            invincibility = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad5))
+        {
+            invincibility = false;
         }
     }
 }
