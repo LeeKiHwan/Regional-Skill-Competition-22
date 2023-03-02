@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     {
         Movement();
         Fire();
+        CheatKey();
     }
 
     void Movement()
@@ -94,7 +95,7 @@ public class Player : MonoBehaviour
                 if (bulletLevel < 5)
                 {
                     bulletLevel++;
-                    bulletDamage += 10f;
+                    bulletDamage += 5;
                 }
                 break;
 

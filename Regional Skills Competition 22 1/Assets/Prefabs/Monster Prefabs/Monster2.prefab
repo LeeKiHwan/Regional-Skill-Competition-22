@@ -139,5 +139,5 @@ MonoBehaviour:
   score: 20
   bulletDamage: 7
   bulletSpeed: 3
-  bulletFireRate: 3
+  bulletFireRate: 2
   MonsterBullet: {fileID: 4569425718356394655, guid: 7de7098ca6ef81a47ab1c56e68dbebec, type: 3}

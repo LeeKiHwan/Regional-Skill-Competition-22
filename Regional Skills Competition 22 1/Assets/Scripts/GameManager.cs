@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
         SpawnRedBloodCell();
         BackGroundMove();
         UICheck();
+        CheatKey();
     }
 
     private void SpawnMonster()
@@ -204,7 +205,7 @@ public class GameManager : MonoBehaviour
 
         currentStage = 1;
 
-        yield return new WaitForSeconds(100);
+        yield return new WaitForSeconds(40);
 
         SpawnBoss();
 
@@ -216,7 +217,7 @@ public class GameManager : MonoBehaviour
         MonsterSpawnable = true;
         currentStage = 2;
 
-        yield return new WaitForSeconds (100);
+        yield return new WaitForSeconds (40);
 
         SpawnBoss();
 
